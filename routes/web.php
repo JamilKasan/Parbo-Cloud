@@ -19,130 +19,22 @@ Route::get('/', function () {
 });
 
 Route::post('/sync', function () {
-    try {
-        if (isset($_REQUEST['table']) && isset($_REQUEST['record']))
-        {
-
-            $table = $_REQUEST['table'];
-            $record = $_REQUEST['record'];
-            if (DB::table($table)->where('ID', $record['ID'])->exists())
-            {
-                DB::table($table)->where('ID', $record['ID'])->update($record);
-                return 'OK';
-            }
-            else
-            {
-                DB::table($table)->insert($record);
-                return 'OK';
-            }
-
-        }
-        else
-        {
-            return 'ERROR';
-        }
-
-    }
-    catch (Exception $e)
-    {
-        DB::table('errors')->insert(['info' => 'Error in sync: ' . $e->getMessage() , 'record' => json_encode($_REQUEST)]);
-        return 'ERROR';
-    }
+    $sync = new \App\Classes\Sync();
+    return $sync->sync();
 });
 
 
 Route::post('/sync/check-request', function () {
-    try {
-        if (isset($_REQUEST['table']) && isset($_REQUEST['record']))
-        {
-
-            $table = $_REQUEST['table'];
-            $record = $_REQUEST['record'];
-            if (DB::table($table)->where('ID', $record['ID'])->exists())
-            {
-                DB::table($table)->where('ID', $record['ID'])->update($record);
-                return 'OK';
-            }
-            else
-            {
-                DB::table($table)->insert($record);
-                return 'OK';
-            }
-
-        }
-        else
-        {
-            return 'ERROR';
-        }
-
-    }
-    catch (Exception $e)
-    {
-        DB::table('errors')->insert(['info' => 'Error in sync: ' . $e->getMessage() , 'record' => json_encode($_REQUEST)]);
-        return 'ERROR';
-    }
+    $sync = new \App\Classes\Sync();
+    return $sync->checkRequest();
 });
 
 Route::post('/sync/check-status', function () {
-    try {
-        if (isset($_REQUEST['table']) && isset($_REQUEST['record']))
-        {
-
-            $table = $_REQUEST['table'];
-            $record = $_REQUEST['record'];
-            if (DB::table($table)->where('ID', $record['ID'])->exists())
-            {
-                DB::table($table)->where('ID', $record['ID'])->update($record);
-                return 'OK';
-            }
-            else
-            {
-                DB::table($table)->insert($record);
-                return 'OK';
-            }
-
-        }
-        else
-        {
-            return 'ERROR';
-        }
-
-    }
-    catch (Exception $e)
-    {
-        DB::table('errors')->insert(['info' => 'Error in sync: ' . $e->getMessage() , 'record' => json_encode($_REQUEST)]);
-        return 'ERROR';
-    }
+    $status = new \App\Classes\Sync();
+    return $status->checkStatus();
 });
 
 Route::post('/sync/set-status', function () {
-    try {
-        if (isset($_REQUEST['table']) && isset($_REQUEST['record']))
-        {
-
-            $table = $_REQUEST['table'];
-            $record = $_REQUEST['record'];
-            if (DB::table($table)->where('ID', $record['ID'])->exists())
-            {
-                DB::table($table)->where('ID', $record['ID'])->update($record);
-                return 'OK';
-            }
-            else
-            {
-                DB::table($table)->insert($record);
-                return 'OK';
-            }
-
-        }
-        else
-        {
-            return 'ERROR';
-        }
-
-    }
-    catch (Exception $e)
-    {
-        DB::table('errors')->insert(['info' => 'Error in sync: ' . $e->getMessage() , 'record' => json_encode($_REQUEST), 'date' => date('Y-m-d H:i:s')]);
-        return 'ERROR';
-    }
+    $status = new \App\Classes\Sync();
+    return $status->setStatus();
 });
