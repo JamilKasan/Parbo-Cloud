@@ -36,7 +36,7 @@ return [
     'connections' => [
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => 'mongodb://localhost:27017',
+            'dsn' => env('MONGO_URL','mongodb://localhost:27017'),
             'database' => 'Parbo-Cloud',
             ],
 
