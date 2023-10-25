@@ -14,27 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::post('/sync', function () {
-    $sync = new \App\Classes\Sync();
-    return $sync->sync();
-});
-
-
-Route::post('/sync/check-request', function () {
-    $sync = new \App\Classes\Sync();
-    return $sync->checkRequest();
-});
-
-Route::post('/sync/check-status', function () {
-    $status = new \App\Classes\Sync();
-    return $status->checkStatus();
-});
-
-Route::post('/sync/set-status', function () {
-    $status = new \App\Classes\Sync();
-    return $status->setStatus();
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+//
+//Route::post('/sync', function () {
+//    $sync = new \App\Classes\Sync();
+//    return $sync->sync();
+//});
+//
+//
+//Route::post('/sync/check-request', function () {
+//    $sync = new \App\Classes\Sync();
+//    return $sync->checkRequest();
+//});
+//
+//Route::post('/sync/check-status', function () {
+//    $status = new \App\Classes\Sync();
+//    return $status->checkStatus();
+//});
+//
+//Route::post('/sync/set-status', function () {
+//    $status = new \App\Classes\Sync();
+//    return $status->setStatus();
+//});
