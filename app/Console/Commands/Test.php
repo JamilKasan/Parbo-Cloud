@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class Test extends Command
 {
@@ -28,12 +29,8 @@ class Test extends Command
      */
     public function handle()
     {
-        $tables = ['test' => ['name' => 'string22']];
-        foreach ($tables as $key => $table )
-        {
-            DB::table($key)->insert($table);
-        }
+        logTimeAttendance(fopen("test.csv","r"));
+//        $this->line(basename('68P8IAcfC6TumW6FiFA0aH8HesX44Z-metadGVzdC5jc3Y=-.txt') );
 
-        return 0;
     }
 }
