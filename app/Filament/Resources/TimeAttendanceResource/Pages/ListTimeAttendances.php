@@ -15,18 +15,18 @@ class ListTimeAttendances extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
-            Actions\CreateAction::make()->action(
-                function (array $data)
-                {
-
-                }
-            )
-            ->form(
-                FileUpload::make('file')
-                    ->label('File')
-                    ->acceptedFileTypes(['text/csv', 'text/plain', 'application/vnd.ms-excel'])
-                    ->directory('csv')
-            )
+//            Actions\CreateAction::make()->action(
+//                function (array $data)
+//                {
+//
+//                }
+//            )
+//            ->form(
+//                FileUpload::make('file')
+//                    ->label('File')
+//                    ->acceptedFileTypes(['text/csv', 'text/plain', 'application/vnd.ms-excel'])
+//                    ->directory('csv')
+//            )
         ];
     }
 }
