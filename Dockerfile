@@ -85,6 +85,10 @@ RUN #curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 
 # Install MongoDB extension
 RUN pecl install mongodb && docker-php-ext-enable mongodb
+#RUN apt-get update && apt-get install -y \
+#    libssl-dev
+#RUN docker-php-ext-install openssl
+
 
 # Clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -131,7 +135,8 @@ RUN chmod 0600 /var/spool/cron/crontabs/root
 
 # set working directory
 WORKDIR $APP_HOME
-
+RUN apt-get update && apt-get install -y \
+    php-openssl
 USER ${USERNAME}
 
 # copy source files and config file
@@ -143,6 +148,9 @@ COPY --chown=${USERNAME}:${USERNAME} .env.$ENV $APP_HOME/.env
  #   else COMPOSER_MEMORY_LIMIT=-1 composer install --optimize-autoloader --no-interaction --no-progress --no-dev; \
   #  fi
 
+
+#RUN #echo 'root:Docker!' | chpasswd
+#RUN echo 'Docker!' | passwd --stdin ${USERNAME}
 
 RUN #npm install
 RUN #npm run build

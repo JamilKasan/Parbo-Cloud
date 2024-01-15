@@ -1,0 +1,24 @@
+@import '../../vendor/filament/filament/resources/css/app.css';
+
+/* Path: resources/css/app.css */
+
+input[type="text"] {
+    height: 2.5rem;
+    padding: 15px;
+    border: 1px solid;
+}
+
+input[type="number"] {
+    height: 2.5rem;
+    padding: 15px;
+    border: 1px solid;
+    border-color: #d1d5db;
+}
+
+
+input[type="password"] {
+    height: 2.5rem;
+    padding: 15px;
+    border: 1px solid;
+    border-color: #d1d5db;
+}
